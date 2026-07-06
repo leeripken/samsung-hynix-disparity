@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼성전자·SK하이닉스 50일 이격도</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="header-logo">📊</div>
+    <div>
+      <div class="header-title">삼성전자·SK하이닉스 50일 이격도</div>
+      <div class="header-sub">이그전(이은택의 그림전략) 기반 과열 트래커</div>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <a href="./samsung.html" class="nav-btn active">삼성전자</a>
+    <a href="./hynix.html" class="nav-btn">SK하이닉스</a>
+    <a href="./mdd.html" class="nav-btn">MDD ↗</a>
+    <a href="#" class="nav-btn nav-share">🔗 공유</a>
+    <a href="#" class="nav-btn nav-channel">✈ 채널</a>
+  </nav>
+</header>
+
+<main class="container">
+<h1>삼성전자 50일 이격도</h1>
+<section class="card">
+<h2>현재 요약</h2>
+<p id="date"></p>
+<p id="close"></p>
+<p id="ma50"></p>
+<p id="disparity"></p>
+<p id="zone"></p>
+</section>
+<section class="card">
+<h2>이격도 추이</h2>
+<div class="period-buttons">
+<button onclick="setPeriod(63, this)">3M</button>
+<button onclick="setPeriod(126, this)">6M</button>
+<button onclick="setPeriod(252, this)" class="active">1Y</button>
+<button onclick="setPeriod(504, this)">2Y</button>
+<button onclick="setPeriod(9999, this)">5Y</button>
+</div>
+<canvas id="monitor" style="width:100%;margin-bottom:12px;"></canvas>
+<canvas id="chart"></canvas>
+<p style="font-size:12px;color:#aaa;text-align:center;margin-top:6px;">
+  휠로 확대/축소 · 드래그로 이동 · 더블클릭으로 초기화
+</p>
+</section>
+<section class="interpret">
+  <h2>이그전 50일 이격도 해석법</h2>
+  <p>이격도 = 현재가 / 50일 이동평균 x 100. 현재 주가가 최근 50거래일 평균 대비 얼마나 위/아래에 있는지를 나타냅니다. 한국의 초강세장은 50일선을 지지받으며 상승하는 경향이 있습니다.</p>
+  <div class="zone-row">
+    <span class="zone-badge badge-red">과열권</span>
+    <span>코스피 130 이상 · 코스닥 124 이상 &nbsp; 추격매수(Panic Buying) 자제</span>
+  </div>
+  <div class="zone-row">
+    <span class="zone-badge badge-orange">과열 경계</span>
+    <span>코스피 120~130 · 코스닥 118~124 &nbsp; 분할·속도조절 관심</span>
+  </div>
+  <div class="zone-row">
+    <span class="zone-badge badge-green">정상</span>
+    <span>코스피 105~120 · 코스닥 106~118 &nbsp; 추세 추종 유효</span>
+  </div>
+  <div class="zone-row">
+    <span class="zone-badge badge-blue">과열 해소</span>
+    <span>코스피 105 이하 · 코스닥 106 이하 &nbsp; 투매(Panic Selling) 자제, 이격조정 끝난 업종부터 매수</span>
+  </div>
+  <p class="note">※ 지수별 변동성 차이로 코스피·코스닥 기준선이 다릅니다(각 지수 자체 분포 기준).</p>
+  <p class="mdd-note"><strong>MDD와 함께 보기:</strong> 이격도가 과열 해소되고 MDD(고점대비 낙폭)도 조정 구간으로 깊어졌다면 강세장 정상 조정의 분할매수 후보 구간입니다.</p>
+  <p class="note">※ 출처: 이그전(이은택의 그림전략). 본 사이트는 정보 제공용이며 투자 권유가 아닙니다.</p>
+</section>
+<section class="card">
+  <h2>최근 기록 <small style="font-size:13px;color:#888;">50일 이격도</small></h2>
+  <table id="history-table" style="width:100%;border-collapse:collapse;font-size:14px;">
+    <thead>
+      <tr style="border-bottom:1px solid #eee;color:#888;">
+         <th style="text-align:left;padding:8px 4px;">날짜</th>
+         <th style="text-align:right;padding:8px 4px;">현재가</th>
+         <th style="text-align:right;padding:8px 4px;">50MA</th>
+         <th style="text-align:right;padding:8px 4px;">이격도</th>
+         <th style="text-align:center;padding:8px 4px;">구간</th>
+      </tr>
+    </thead>
+    <tbody id="history-body"></tbody>
+  </table>
+</section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2"></script>
+<script src="./app.js"></script>
+<footer style="text-align:center;padding:24px 20px;font-size:12px;color:#999;border-top:1px solid #eee;margin-top:20px;">
+  <p>데이터: 무료 공개 소스(KRX/pykrx) · 갱신: 매 거래일 12:00 / 15:40 KST</p>
+  <p>© leeripken 투자노트 · 이그전 이론 기반 · 투자 판단의 책임은 본인에게 있습니다.</p>
+</footer>
+</body>
+</html>

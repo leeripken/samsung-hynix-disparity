@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>삼성전자·SK하이닉스 MDD 트래커</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-left">
+    <div class="header-logo">📉</div>
+    <div>
+      <div class="header-title">삼성전자·SK하이닉스 MDD</div>
+      <div class="header-sub">이그전 기반 고점대비 낙폭 트래커</div>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <a href="./samsung.html" class="nav-btn">삼성전자</a>
+    <a href="./hynix.html" class="nav-btn">SK하이닉스</a>
+    <a href="./mdd.html" class="nav-btn active">MDD</a>
+    <a href="#" class="nav-btn nav-share">🔗 공유</a>
+    <a href="https://t.me/leeripken" class="nav-btn nav-channel" target="_blank" rel="noopener noreferrer">✈ 채널</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="page-meta">
+    <h1>삼성전자 · SK하이닉스 MDD</h1>
+    <p id="updated-at"></p>
+  </div>
+
+  <section class="mdd-summary-grid" id="mdd-cards"></section>
+
+  <section class="card">
+    <h2>현재 낙폭 위치</h2>
+    <div class="mdd-monitor-wrap">
+       <div class="mdd-pointer-row">
+        <canvas id="monitor-canvas" style="display:block;width:100%;border-radius:8px;"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+      <h2>고점대비 낙폭(MDD) 추이</h2>
+      <div class="period-buttons">
+        <button onclick="setMddPeriod(63, this)">3M</button>
+        <button onclick="setMddPeriod(126, this)">6M</button>
+        <button onclick="setMddPeriod(252, this)">1Y</button>
+        <button onclick="setMddPeriod(504, this)">2Y</button>
+        <button onclick="setMddPeriod(9999, this)" class="active">5Y</button>
+      </div>
+    </div>
+
+    <canvas id="mddChart"></canvas>
+    <p class="chart-help">휠로 확대/축소 · 드래그로 이동 · 더블클릭으로 초기화</p>
+  </section>
+
+  <section class="interpret">
+    <h2>이그전 MDD 해석법</h2>
+    <p>MDD = (현재가 ÷ 직전 고점 − 1) × 100. 고점 대비 지금 얼마나 빠졌는지를 나타냅니다. 본 트래커는 52주(최근 1년) 고점 대비 낙폭으로 구간을 판정하고, 사상 최고가 대비 낙폭도 함께 보여줍니다.</p>
+    <p>핵심: 강세장일수록 조정(MDD)은 더 자주·더 크게 나타납니다. 그래서 −10%대 조정은 강세장에서는 비정상이 아니라 정상 조정에 가까울 수 있습니다.</p>
+
+
+    <div class="zone-row">
+      <span style="background:#2980b9;color:white;padding:7px 15px;border-radius:12px;font-size:12px;">정상</span>
+      <span>코스피 0~-5 · 코스닥 0~-9 &nbsp; 통상 범위</span>
+    </div>
+    <div class="zone-row">
+      <span style="background:#27ae60;color:white;padding:7px 15px;border-radius:12px;font-size:12px;">관심</span>
+      <span>코스피 -5~-10 · 코스닥 -9~-14 &nbsp; 조정 진입 가능</span>
+    </div>
+    <div class="zone-row">
+      <span style="background:#f5a623;color:white;padding:7px 15px;border-radius:12px;font-size:12px;">조정</span>
+      <span>코스피 -10~-15 · 코스닥 -14~-20 &nbsp; 강세장에선 흔한 정상 조정, 패닉셀 자제</span>
+    </div>
+    <div class="zone-row">
+      <span style="background:#e8462a;color:white;padding:7px 15px;border-radius:12px;font-size:12px;">경계</span>
+      <span>코스피 ≤-15 · 코스닥 ≤-20 &nbsp; 역사적으로 경기둔화기에만 출현</span>
+    </div>
+
+    <p class="note">※ 삼성전자, SK하이닉스 모두 코스피형 기준으로 구간을 판정합니다.</p>
+    <p class="note">※ 출처: 이그전(이은택의 그림전략). 본 사이트는 정보 제공용이며 투자 권유가 아닙니다.</p>
+  </section>
+
+  <section class="card">
+    <h2>최근 기록 <small style="font-size:13px;color:#888;">52주 고점대비 낙폭</small></h2>
+    <table id="history-table" style="width:100%;border-collapse:collapse;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:1px solid #eee;color:#888;">
+          <th style="text-align:left;padding:8px 4px;">날짜</th>
+          <th style="text-align:right;padding:8px 4px;">삼성전자</th>
+          <th style="text-align:center;padding:8px 4px;">구간</th>
+          <th style="text-align:right;padding:8px 4px;">SK하이닉스</th>
+          <th style="text-align:center;padding:8px 4px;">구간</th>
+        </tr>
+      </thead>
+      <tbody id="history-body"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <p>데이터: 무료 공개 소스(KRX/pykrx) · 갱신: 매 거래일 12:00 / 15:40 KST</p>
+  <p>© leeripken 투자노트 · 이그전 이론 기반 · 투자 판단의 책임은 본인에게 있습니다.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2"></script>
+<script src="./mdd.js"></script>
+</body>
+</html>
