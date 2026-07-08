@@ -3,6 +3,7 @@ let mddChart = null;
 let fullLabels = [];
 let samsungSeries = [];
 let hynixSeries = [];
+let resetZoomBound = false;
 
 function getZone(value, zoneType) {
   if (zoneType === "kosdaq") {
@@ -178,17 +179,18 @@ function renderHistory(samsung, hynix) {
   }).join("");
 }
 
-function renderChart() {
+function renderChart(days) {
   const canvas = document.getElementById("mddChart");
   if (!canvas) return;
   if (mddChart) mddChart.destroy();
+  const n = days || fullLabels.length;
   mddChart = new Chart(canvas.getContext("2d"), {
     type: "line",
     data: {
-      labels: fullLabels,
+      labels: fullLabels.slice(-n),
       datasets: [
-        { label:"삼성전자",   data:samsungSeries, borderColor:"#0b57d0", backgroundColor:"rgba(11,87,208,0.08)",  tension:0.18, pointRadius:0, borderWidth:1.8 },
-        { label:"SK하이닉스", data:hynixSeries,   borderColor:"#d946ef", backgroundColor:"rgba(217,70,239,0.08)", tension:0.18, pointRadius:0, borderWidth:1.8 }
+        { label:"삼성전자",   data:samsungSeries.slice(-n), borderColor:"#0b57d0", backgroundColor:"rgba(11,87,208,0.08)",  tension:0.18, pointRadius:0, pointHoverRadius:4, pointHoverBackgroundColor:"#fff", pointHoverBorderColor:"#0b57d0", pointHoverBorderWidth:2, borderWidth:1.8 },
+        { label:"SK하이닉스", data:hynixSeries.slice(-n),   borderColor:"#d946ef", backgroundColor:"rgba(217,70,239,0.08)", tension:0.18, pointRadius:0, pointHoverRadius:4, pointHoverBackgroundColor:"#fff", pointHoverBorderColor:"#d946ef", pointHoverBorderWidth:2, borderWidth:1.8 }
       ]
     },
     options: {
@@ -219,15 +221,14 @@ function renderChart() {
       }
     }
   });
-  canvas.addEventListener("dblclick", () => { if (mddChart) mddChart.resetZoom(); });
+  if (!resetZoomBound) {
+    canvas.addEventListener("dblclick", () => { if (mddChart) mddChart.resetZoom(); });
+    resetZoomBound = true;
+  }
 }
 
 function setMddPeriod(days, btn) {
-  if (!mddChart) return;
-  mddChart.data.labels           = fullLabels.slice(-days);
-  mddChart.data.datasets[0].data = samsungSeries.slice(-days);
-  mddChart.data.datasets[1].data = hynixSeries.slice(-days);
-  mddChart.update();
+  renderChart(days);
   document.querySelectorAll(".period-buttons button").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
 }

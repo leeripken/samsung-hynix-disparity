@@ -1,11 +1,83 @@
 let chartInstance = null;
 let allLabels = [];
 let allValues = [];
+let resetZoomBound = false;
+
+function renderChart(days) {
+  const ctx = document.getElementById('chart').getContext('2d');
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: allLabels.slice(-days),
+      datasets: [{
+        label: '50일 이격도',
+        data: allValues.slice(-days),
+        borderColor: '#e8462a',
+        backgroundColor: 'rgba(232,70,42,0.10)',
+        fill: true,
+        tension: 0.2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '#e8462a',
+        pointHoverBorderWidth: 2,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        annotation: {
+          annotations: {
+            line130: {
+              type: 'line',
+              yMin: 130, yMax: 130,
+              borderColor: 'rgba(232,70,42,0.7)',
+              borderWidth: 1,
+              borderDash: [6, 4],
+              label: { content: '130 과열', display: true, position: 'end', color: '#e8462a', font: { size: 11 } }
+            },
+            line105: {
+              type: 'line',
+              yMin: 105, yMax: 105,
+              borderColor: 'rgba(41,128,185,0.7)',
+              borderWidth: 1,
+              borderDash: [6, 4],
+              label: { content: '105 과열해소', display: true, position: 'end', color: '#2980b9', font: { size: 11 } }
+            }
+          }
+        },
+        zoom: {
+          zoom: {
+            wheel: { enabled: true },
+            pinch: { enabled: true },
+            mode: 'x'
+          },
+          pan: {
+            enabled: true,
+            mode: 'x'
+          }
+        }
+      },
+      scales: {
+        y: { title: { display: true, text: '이격도 (%)' } },
+        x: { ticks: { maxTicksLimit: 8 } }
+      }
+    }
+  });
+
+  if (!resetZoomBound) {
+    document.getElementById('chart').addEventListener('dblclick', () => {
+      chartInstance.resetZoom();
+    });
+    resetZoomBound = true;
+  }
+}
 
 function setPeriod(days, btn) {
-  chartInstance.data.labels = allLabels.slice(-days);
-  chartInstance.data.datasets[0].data = allValues.slice(-days);
-  chartInstance.update();
+  renderChart(days);
   document.querySelectorAll('.period-buttons button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
@@ -127,66 +199,7 @@ async function loadHynix() {
   `}).join('');
 
 
-  const ctx = document.getElementById('chart').getContext('2d');
-  chartInstance = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: allLabels.slice(-252),
-      datasets: [{
-        label: '50일 이격도',
-        data: allValues.slice(-252),
-        borderColor: '#e8462a',
-        backgroundColor: 'rgba(232,70,42,0.10)',
-        fill: true,
-        tension: 0.2,
-        pointRadius: 0,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        annotation: {
-          annotations: {
-            line130: {
-              type: 'line',
-              yMin: 130, yMax: 130,
-              borderColor: 'rgba(232,70,42,0.7)',
-              borderWidth: 1,
-              borderDash: [6, 4],
-              label: { content: '130 과열', display: true, position: 'end', color: '#e8462a', font: { size: 11 } }
-            },
-            line105: {
-              type: 'line',
-              yMin: 105, yMax: 105,
-              borderColor: 'rgba(41,128,185,0.7)',
-              borderWidth: 1,
-              borderDash: [6, 4],
-              label: { content: '105 과열해소', display: true, position: 'end', color: '#2980b9', font: { size: 11 } }
-            }
-          }
-        },
-        zoom: {
-          zoom: {
-            wheel: { enabled: true },
-            pinch: { enabled: true },
-            mode: 'x'
-          },
-          pan: {
-            enabled: true,
-            mode: 'x'
-          }
-        }
-      },
-      scales: {
-        y: { title: { display: true, text: '이격도 (%)' } },
-        x: { ticks: { maxTicksLimit: 8 } }
-      }
-    }
-  });
-    document.getElementById('chart').addEventListener('dblclick', () => {
-    chartInstance.resetZoom();
-  });
+  renderChart(252);
 }
 
 loadHynix();
