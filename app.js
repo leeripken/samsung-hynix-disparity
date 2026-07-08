@@ -37,7 +37,7 @@ function renderChart(days) {
               borderColor: 'rgba(232,70,42,0.7)',
               borderWidth: 1,
               borderDash: [6, 4],
-              label: { content: '130 과열', display: true, position: 'start', color: '#e8462a', font: { size: 11 } }
+              label: { content: '130 과열', display: true, position: 'start', color: '#e8462a', backgroundColor: 'transparent', font: { size: 11 } }
             },
             line105: {
               type: 'line',
@@ -45,7 +45,7 @@ function renderChart(days) {
               borderColor: 'rgba(41,128,185,0.7)',
               borderWidth: 1,
               borderDash: [6, 4],
-              label: { content: '105 과열해소', display: true, position: 'start', color: '#2980b9', font: { size: 11 } }
+              label: { content: '105 과열해소', display: true, position: 'start', color: '#2980b9', backgroundColor: 'transparent', font: { size: 11 } }
             }
           }
         },
