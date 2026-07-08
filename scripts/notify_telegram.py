@@ -5,8 +5,9 @@ import sys
 import requests
 
 DATA_DIR = "data"
+SITE_URL = "https://leeripken.github.io/samsung-hynix-disparity/"
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+CHAT_IDS = [c.strip() for c in os.environ.get("TELEGRAM_CHAT_ID", "").split(",") if c.strip()]
 
 
 def load(filename):
@@ -35,18 +36,21 @@ def build_message():
         lines.append(f"MDD(52주): {m['current_drawdown']}% ({m['current_zone']})")
         lines.append("")
 
+    lines.append(SITE_URL)
+
     return "\n".join(lines).strip()
 
 
 def send(message):
-    if not BOT_TOKEN or not CHAT_ID:
+    if not BOT_TOKEN or not CHAT_IDS:
         print("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID 가 설정되지 않았습니다.")
         sys.exit(1)
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    res = requests.post(url, data={"chat_id": CHAT_ID, "text": message}, timeout=10)
-    res.raise_for_status()
-    print("텔레그램 전송 완료")
+    for chat_id in CHAT_IDS:
+        res = requests.post(url, data={"chat_id": chat_id, "text": message}, timeout=10)
+        res.raise_for_status()
+        print(f"텔레그램 전송 완료: {chat_id}")
 
 
 if __name__ == "__main__":
