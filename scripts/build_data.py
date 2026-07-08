@@ -2,11 +2,13 @@ from pykrx import stock
 import pandas as pd
 import json
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+KST = timezone(timedelta(hours=9))
 
 
 def build_data(ticker, name, filename):
-    end_date = datetime.today()
+    end_date = datetime.now(KST)
     start_date = end_date - timedelta(days=365 * 5)
 
     df = stock.get_market_ohlcv_by_date(
@@ -38,7 +40,7 @@ def build_data(ticker, name, filename):
         "name": name,
         "ticker": ticker,
         "latest": {
-            "date": latest["날짜"] + " " + datetime.now().strftime("%H:%M"),
+            "date": latest["날짜"] + " " + end_date.strftime("%H:%M") + " KST",
             "close": int(latest["종가"]),
             "ma50": round(float(latest["MA50"]), 2),
             "disparity": round(float(latest["disparity"]), 2),
