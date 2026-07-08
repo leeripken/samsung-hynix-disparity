@@ -5,7 +5,7 @@ import sys
 import requests
 
 DATA_DIR = "data"
-SITE_URL = "https://leeripken.github.io/samsung-hynix-disparity/"
+SITE_URL = "https://leeripken.github.io/samsung-hynix-disparity/samsung.html"
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 CHAT_IDS = [c.strip() for c in os.environ.get("TELEGRAM_CHAT_ID", "").split(",") if c.strip()]
 
