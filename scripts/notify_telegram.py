@@ -49,6 +49,8 @@ def send(message):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     for chat_id in CHAT_IDS:
         res = requests.post(url, data={"chat_id": chat_id, "text": message}, timeout=10)
+        if not res.ok:
+            print(f"전송 실패 (chat_id={chat_id}): {res.status_code} {res.text}")
         res.raise_for_status()
         print(f"텔레그램 전송 완료: {chat_id}")
 
