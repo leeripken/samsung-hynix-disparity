@@ -14,8 +14,8 @@ function renderChart(days) {
         label: '50일 이격도',
         data: allValues.slice(-days),
         borderColor: '#e8462a',
-        backgroundColor: 'rgba(232,70,42,0.10)',
-        fill: true,
+        backgroundColor: 'transparent',
+        fill: false,
         tension: 0.2,
         pointRadius: 0,
         pointHoverRadius: 4,
@@ -37,7 +37,7 @@ function renderChart(days) {
               borderColor: 'rgba(232,70,42,0.7)',
               borderWidth: 1,
               borderDash: [6, 4],
-              label: { content: '130 과열', display: true, position: 'end', color: '#e8462a', font: { size: 11 } }
+              label: { content: '130 과열', display: true, position: 'start', color: '#e8462a', font: { size: 11 } }
             },
             line105: {
               type: 'line',
@@ -45,7 +45,7 @@ function renderChart(days) {
               borderColor: 'rgba(41,128,185,0.7)',
               borderWidth: 1,
               borderDash: [6, 4],
-              label: { content: '105 과열해소', display: true, position: 'end', color: '#2980b9', font: { size: 11 } }
+              label: { content: '105 과열해소', display: true, position: 'start', color: '#2980b9', font: { size: 11 } }
             }
           }
         },
