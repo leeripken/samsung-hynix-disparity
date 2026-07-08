@@ -159,7 +159,7 @@ function drawMonitorPanel(value) {
 
 
 async function loadSamsung() {
-  const res = await fetch('./data/samsung.json');
+  const res = await fetch('./data/samsung.json?v=' + Date.now());
   const data = await res.json();
 
   const v = data.latest.disparity;

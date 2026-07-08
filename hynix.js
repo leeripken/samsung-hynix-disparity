@@ -158,7 +158,7 @@ function drawMonitorPanel(value) {
 }
 
 async function loadHynix() {
-  const res = await fetch('./data/hynix.json');
+  const res = await fetch('./data/hynix.json?v=' + Date.now());
   const data = await res.json();
 
   const v = data.latest.disparity;
