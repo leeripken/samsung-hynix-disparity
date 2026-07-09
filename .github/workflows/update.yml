@@ -2,9 +2,10 @@ name: Update disparity data
 
 on:
   schedule:
-    # 한국 시간(KST) 기준 평일 12:30, 16:00 실행 (UTC = KST - 9)
-    - cron: "30 3 * * 1-5"
-    - cron: "0 7 * * 1-5"
+    # 한국 시간(KST) 기준 평일 12:37, 16:12 실행 (UTC = KST - 9)
+    # 정시(00분/30분)는 GitHub Actions 부하가 몰려 지연되기 쉬워 애매한 분으로 지정
+    - cron: "37 3 * * 1-5" #UTC 시간에서 -9시간이라서 KST로 12:37 1-5 월요일~금요일
+    - cron: "12 7 * * 1-5" #UTC 시간에서 -9시간이라서 KST로 16:12
   workflow_dispatch: {}
 
 permissions:
