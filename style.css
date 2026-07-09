@@ -181,16 +181,31 @@ p {
 }
 
 .zone-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(80px, max-content) 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.zone-row:last-child {
+  border-bottom: none;
+}
+
+.zone-row span:last-child {
+  display: block;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.zone-row span:first-child {
+  text-align: center;
 }
 
 .zone-badge {
-  padding: 5px 14px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
   color: white;
   font-size: 13px;
   font-weight: 700;
@@ -448,5 +463,24 @@ footer {
 
   .zone-row {
     align-items: flex-start;
+  }
+  /* 모바일에서 차트와 날짜 가독성 개선 */
+  #date {
+    font-size: 10px;
+    color: #555;
+    margin: 6px 0 8px;
+  }
+
+  canvas#chart {
+    height: 260px !important;
+  }
+
+  canvas#monitor {
+    height: 90px !important;
+  }
+
+  .monitor-wrap {
+    min-height: 120px;
+    transform: none;
   }
 }

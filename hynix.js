@@ -62,8 +62,8 @@ function renderChart(days) {
         }
       },
       scales: {
-        y: { title: { display: true, text: '이격도 (%)' } },
-        x: { ticks: { maxTicksLimit: 8 } }
+        y: { ticks:{font:{ size: 8 } }, title: { display: true, text: '이격도 (%)' } },
+        x: { ticks: { maxTicksLimit: 8, font:{ size: 8 } } }
       }
     }
   });
@@ -177,10 +177,10 @@ async function loadHynix() {
   const recent = data.history.slice(-42).reverse();
   const zoneBadge = (zone) => {
     const map = {
-      '과열권': '<span style="background:#e8462a;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열권</span>',
-      '과열 경계': '<span style="background:#f5a623;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열 경계</span>',
-      '정상': '<span style="background:#27ae60;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">정상</span>',
-      '과열 해소': '<span style="background:#2980b9;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열 해소</span>'
+      '과열권': '<span style="background:#e8462a;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열권</span>',
+      '과열 경계': '<span style="background:#f5a623;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열 경계</span>',
+      '정상': '<span style="background:#27ae60;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">정상</span>',
+      '과열 해소': '<span style="background:#2980b9;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열 해소</span>'
     };
     return map[zone] || zone;
   };
@@ -190,7 +190,7 @@ async function loadHynix() {
     const ma50Color = prev ? (row.ma50 > prev.ma50 ? '#e8462a' : row.ma50 < prev.ma50 ? '#2980b9' : '#111') : '#111';
     return `
     <tr style="border-bottom:1px solid #f0f0f0;">
-      <td style="padding:8px 4px;color:#555;">${row.date}</td>
+      <td style="padding:8px 4px;color:#555;font-size:11px;white-space:nowrap;">${row.date}</td>
       <td style="padding:8px 4px;text-align:right;color:${closeColor};">${row.close.toLocaleString()}</td>
       <td style="padding:8px 4px;text-align:right;color:${ma50Color};">${row.ma50.toLocaleString()}</td>
       <td style="padding:8px 4px;text-align:right;font-weight:bold;">${row.disparity}%</td>

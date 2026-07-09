@@ -62,8 +62,8 @@ function renderChart(days) {
         }
       },
       scales: {
-        y: { title: { display: true, text: '이격도 (%)' } },
-        x: { ticks: { maxTicksLimit: 8 } }
+        y: { ticks:{font:{ size: 8 } }, title: { display: true, text: '이격도 (%)' } },
+        x: { ticks: { maxTicksLimit: 8, font:{ size: 8 } } }
       }
     }
   });
@@ -176,10 +176,10 @@ async function loadSamsung() {
     const tbody = document.getElementById('history-body');
   const recent = data.history.slice(-42).reverse();
   const zoneBadge = (zone) => {
-    if (zone === '과열권') return '<span style="background:#e8462a;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열권</span>';
-    if (zone === '과열 경계') return '<span style="background:#f5a623;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열 경계</span>';
-    if (zone === '정상') return '<span style="background:#27ae60;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">정상</span>';
-    if (zone === '과열 해소') return '<span style="background:#2980b9;color:white;padding:2px 10px;border-radius:12px;font-size:12px;">과열 해소</span>';
+    if (zone === '과열권') return '<span style="background:#e8462a;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열권</span>';
+    if (zone === '과열 경계') return '<span style="background:#f5a623;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열 경계</span>';
+    if (zone === '정상') return '<span style="background:#27ae60;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">정상</span>';
+    if (zone === '과열 해소') return '<span style="background:#2980b9;color:white;padding:2px 6px;border-radius:12px;font-size:10px;white-space:nowrap;">과열 해소</span>';
     return zone;
   };
    tbody.innerHTML = recent.map((row, i) => {
