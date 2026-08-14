@@ -2,21 +2,20 @@
   "key": "hynix",
   "name": "SK하이닉스",
   "ticker": "000660",
-  "updated_at": "2026-08-13 17:42 KST",
-  "updated_date": "2026-08-13",
-  "updated_time": "17:42",
-  "version_label": "2026-08-13 17:42 KST",
+  "updated_at": "2026-08-14 14:16 KST",
+  "updated_date": "2026-08-14",
+  "updated_time": "14:16",
+  "version_label": "2026-08-14 14:16 KST",
   "zone_type": "kospi",
-  "current_drawdown": -45.4,
+  "current_drawdown": -43.9,
   "current_zone": "경계",
   "mdd_52w": -54.7,
   "mdd_all": -54.7,
-  "current_price": 1593000,
+  "current_price": 1637000,
   "high_52w_price": 2919000,
-  "high_52w_drawdown": -45.4,
+  "high_52w_drawdown": -43.9,
   "chart": {
     "labels": [
-      "2021-06-22",
       "2021-06-23",
       "2021-06-24",
       "2021-06-25",
@@ -1275,10 +1274,10 @@
       "2026-08-10",
       "2026-08-11",
       "2026-08-12",
-      "2026-08-13"
+      "2026-08-13",
+      "2026-08-14"
     ],
     "values": [
-      -17.8,
       -16.5,
       -15.2,
       -13.5,
@@ -2537,10 +2536,16 @@
       -51.4,
       -51.2,
       -48.5,
-      -45.4
+      -45.4,
+      -43.9
     ]
   },
   "history": [
+    {
+      "date": "2026-08-14",
+      "drawdown": -43.9,
+      "zone": "경계"
+    },
     {
       "date": "2026-08-13",
       "drawdown": -45.4,
@@ -2733,11 +2738,6 @@
     },
     {
       "date": "2026-06-19",
-      "drawdown": 0.0,
-      "zone": "정상"
-    },
-    {
-      "date": "2026-06-18",
       "drawdown": 0.0,
       "zone": "정상"
     }
