@@ -2,18 +2,18 @@
   "key": "hynix",
   "name": "SK하이닉스",
   "ticker": "000660",
-  "updated_at": "2026-08-26 13:12 KST",
+  "updated_at": "2026-08-26 16:57 KST",
   "updated_date": "2026-08-26",
-  "updated_time": "13:12",
-  "version_label": "2026-08-26 13:12 KST",
+  "updated_time": "16:57",
+  "version_label": "2026-08-26 16:57 KST",
   "zone_type": "kospi",
-  "current_drawdown": -40.9,
+  "current_drawdown": -42.2,
   "current_zone": "경계",
   "mdd_52w": -54.7,
   "mdd_all": -54.7,
-  "current_price": 1726000,
+  "current_price": 1688000,
   "high_52w_price": 2919000,
-  "high_52w_drawdown": -40.9,
+  "high_52w_drawdown": -42.2,
   "chart": {
     "labels": [
       "2021-07-02",
@@ -2537,13 +2537,13 @@
       -40.7,
       -42.8,
       -42.5,
-      -40.9
+      -42.2
     ]
   },
   "history": [
     {
       "date": "2026-08-26",
-      "drawdown": -40.9,
+      "drawdown": -42.2,
       "zone": "경계"
     },
     {
