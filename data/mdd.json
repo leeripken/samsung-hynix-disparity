@@ -1,28 +1,27 @@
 {
-  "updated_at": "2026-09-21 23:06 KST",
-  "updated_date": "2026-09-21",
-  "updated_time": "23:06",
-  "version_label": "2026-09-21 23:06 KST",
+  "updated_at": "2026-09-22 17:46 KST",
+  "updated_date": "2026-09-22",
+  "updated_time": "17:46",
+  "version_label": "2026-09-22 17:46 KST",
   "stocks": [
     {
       "key": "samsung",
       "name": "삼성전자",
       "ticker": "005930",
-      "updated_at": "2026-09-21 23:06 KST",
-      "updated_date": "2026-09-21",
-      "updated_time": "23:06",
-      "version_label": "2026-09-21 23:06 KST",
+      "updated_at": "2026-09-22 17:46 KST",
+      "updated_date": "2026-09-22",
+      "updated_time": "17:46",
+      "version_label": "2026-09-22 17:46 KST",
       "zone_type": "kospi",
-      "current_drawdown": -24.1,
+      "current_drawdown": -24.4,
       "current_zone": "경계",
       "mdd_52w": -43.2,
       "mdd_all": -45.2,
-      "current_price": 275000,
+      "current_price": 274000,
       "high_52w_price": 362500,
-      "high_52w_drawdown": -24.1,
+      "high_52w_drawdown": -24.4,
       "chart": {
         "labels": [
-          "2021-07-28",
           "2021-07-29",
           "2021-07-30",
           "2021-08-02",
@@ -1281,10 +1280,10 @@
           "2026-09-16",
           "2026-09-17",
           "2026-09-18",
-          "2026-09-21"
+          "2026-09-21",
+          "2026-09-22"
         ],
         "values": [
-          -13.0,
           -13.2,
           -13.7,
           -12.9,
@@ -2543,10 +2542,16 @@
           -30.1,
           -29.4,
           -28.3,
-          -24.1
+          -24.1,
+          -24.4
         ]
       },
       "history": [
+        {
+          "date": "2026-09-22",
+          "drawdown": -24.4,
+          "zone": "경계"
+        },
         {
           "date": "2026-09-21",
           "drawdown": -24.1,
@@ -2741,11 +2746,6 @@
           "date": "2026-07-28",
           "drawdown": -39.3,
           "zone": "경계"
-        },
-        {
-          "date": "2026-07-27",
-          "drawdown": -29.9,
-          "zone": "경계"
         }
       ]
     },
@@ -2753,21 +2753,20 @@
       "key": "hynix",
       "name": "SK하이닉스",
       "ticker": "000660",
-      "updated_at": "2026-09-21 23:06 KST",
-      "updated_date": "2026-09-21",
-      "updated_time": "23:06",
-      "version_label": "2026-09-21 23:06 KST",
+      "updated_at": "2026-09-22 17:46 KST",
+      "updated_date": "2026-09-22",
+      "updated_time": "17:46",
+      "version_label": "2026-09-22 17:46 KST",
       "zone_type": "kospi",
-      "current_drawdown": -35.6,
+      "current_drawdown": -37.4,
       "current_zone": "경계",
       "mdd_52w": -54.7,
       "mdd_all": -54.7,
-      "current_price": 1879000,
+      "current_price": 1827000,
       "high_52w_price": 2919000,
-      "high_52w_drawdown": -35.6,
+      "high_52w_drawdown": -37.4,
       "chart": {
         "labels": [
-          "2021-07-28",
           "2021-07-29",
           "2021-07-30",
           "2021-08-02",
@@ -4026,10 +4025,10 @@
           "2026-09-16",
           "2026-09-17",
           "2026-09-18",
-          "2026-09-21"
+          "2026-09-21",
+          "2026-09-22"
         ],
         "values": [
-          -23.2,
           -23.2,
           -24.2,
           -21.9,
@@ -5288,10 +5287,16 @@
           -39.8,
           -39.5,
           -36.7,
-          -35.6
+          -35.6,
+          -37.4
         ]
       },
       "history": [
+        {
+          "date": "2026-09-22",
+          "drawdown": -37.4,
+          "zone": "경계"
+        },
         {
           "date": "2026-09-21",
           "drawdown": -35.6,
@@ -5485,11 +5490,6 @@
         {
           "date": "2026-07-28",
           "drawdown": -46.9,
-          "zone": "경계"
-        },
-        {
-          "date": "2026-07-27",
-          "drawdown": -37.8,
           "zone": "경계"
         }
       ]
