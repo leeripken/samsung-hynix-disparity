@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-10-15 17:33 KST",
+  "updated_at": "2026-10-15 21:38 KST",
   "updated_date": "2026-10-15",
-  "updated_time": "17:33",
-  "version_label": "2026-10-15 17:33 KST",
+  "updated_time": "21:38",
+  "version_label": "2026-10-15 21:38 KST",
   "stocks": [
     {
       "key": "samsung",
       "name": "삼성전자",
       "ticker": "005930",
-      "updated_at": "2026-10-15 17:33 KST",
+      "updated_at": "2026-10-15 21:38 KST",
       "updated_date": "2026-10-15",
-      "updated_time": "17:33",
-      "version_label": "2026-10-15 17:33 KST",
+      "updated_time": "21:38",
+      "version_label": "2026-10-15 21:38 KST",
       "zone_type": "kospi",
-      "current_drawdown": -42.3,
+      "current_drawdown": -42.8,
       "current_zone": "경계",
       "mdd_52w": -43.2,
       "mdd_all": -45.2,
-      "current_price": 209000,
+      "current_price": 207500,
       "high_52w_price": 362500,
-      "high_52w_drawdown": -42.3,
+      "high_52w_drawdown": -42.8,
       "chart": {
         "labels": [
           "2021-08-18",
@@ -2543,13 +2543,13 @@
           -30.8,
           -35.4,
           -35.3,
-          -42.3
+          -42.8
         ]
       },
       "history": [
         {
           "date": "2026-10-15",
-          "drawdown": -42.3,
+          "drawdown": -42.8,
           "zone": "경계"
         },
         {
@@ -2753,18 +2753,18 @@
       "key": "hynix",
       "name": "SK하이닉스",
       "ticker": "000660",
-      "updated_at": "2026-10-15 17:33 KST",
+      "updated_at": "2026-10-15 21:38 KST",
       "updated_date": "2026-10-15",
-      "updated_time": "17:33",
-      "version_label": "2026-10-15 17:33 KST",
+      "updated_time": "21:38",
+      "version_label": "2026-10-15 21:38 KST",
       "zone_type": "kospi",
-      "current_drawdown": -57.3,
+      "current_drawdown": -57.6,
       "current_zone": "경계",
-      "mdd_52w": -57.3,
-      "mdd_all": -57.3,
-      "current_price": 1245000,
+      "mdd_52w": -57.6,
+      "mdd_all": -57.6,
+      "current_price": 1238000,
       "high_52w_price": 2919000,
-      "high_52w_drawdown": -57.3,
+      "high_52w_drawdown": -57.6,
       "chart": {
         "labels": [
           "2021-08-18",
@@ -5288,13 +5288,13 @@
           -45.0,
           -50.1,
           -51.2,
-          -57.3
+          -57.6
         ]
       },
       "history": [
         {
           "date": "2026-10-15",
-          "drawdown": -57.3,
+          "drawdown": -57.6,
           "zone": "경계"
         },
         {
