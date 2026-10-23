@@ -2,21 +2,20 @@
   "key": "samsung",
   "name": "삼성전자",
   "ticker": "005930",
-  "updated_at": "2026-10-22 21:57 KST",
-  "updated_date": "2026-10-22",
-  "updated_time": "21:57",
-  "version_label": "2026-10-22 21:57 KST",
+  "updated_at": "2026-10-23 17:48 KST",
+  "updated_date": "2026-10-23",
+  "updated_time": "17:48",
+  "version_label": "2026-10-23 17:48 KST",
   "zone_type": "kospi",
-  "current_drawdown": -40.8,
+  "current_drawdown": -40.7,
   "current_zone": "경계",
   "mdd_52w": -43.2,
   "mdd_all": -45.2,
-  "current_price": 214500,
+  "current_price": 215000,
   "high_52w_price": 362500,
-  "high_52w_drawdown": -40.8,
+  "high_52w_drawdown": -40.7,
   "chart": {
     "labels": [
-      "2021-08-25",
       "2021-08-26",
       "2021-08-27",
       "2021-08-30",
@@ -1275,10 +1274,10 @@
       "2026-10-19",
       "2026-10-20",
       "2026-10-21",
-      "2026-10-22"
+      "2026-10-22",
+      "2026-10-23"
     ],
     "values": [
-      -16.8,
       -18.0,
       -18.4,
       -18.0,
@@ -2537,10 +2536,16 @@
       -38.3,
       -42.3,
       -38.3,
-      -40.8
+      -40.8,
+      -40.7
     ]
   },
   "history": [
+    {
+      "date": "2026-10-23",
+      "drawdown": -40.7,
+      "zone": "경계"
+    },
     {
       "date": "2026-10-22",
       "drawdown": -40.8,
@@ -2733,11 +2738,6 @@
     },
     {
       "date": "2026-08-25",
-      "drawdown": -29.1,
-      "zone": "경계"
-    },
-    {
-      "date": "2026-08-24",
       "drawdown": -29.1,
       "zone": "경계"
     }
